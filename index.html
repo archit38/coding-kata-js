@@ -1,0 +1,26 @@
+<html ng-App="myApp">
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="lib/angular.min.js"></script>
+		<script type="text/javascript" src="http://code.angularjs.org/1.0.6/angular-resource.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="js/MainCtrl.js"></script>
+		<script type="text/javascript" src="js/jsonService.js"></script>
+
+	</head>
+	<body ng-controller="MainCtrl">
+		<h1>Roman Number Finder</h1>
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<label class="sr-only" for="number">Email address</label>
+				<input type="number" ng-model="number" class="form-control" id="number" placeholder="Enter Number">
+			</div>
+			<span ng-show = "roman.length > 0 && error.length == 0" class="alert alert-success">{{roman}}</span>
+			<span ng-show= "error.length > 0" class="alert alert-error">{{error}}</span>
+		</form>
+	</body>
+</html>
