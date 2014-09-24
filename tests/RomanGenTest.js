@@ -29,4 +29,9 @@ describe('MainCtrl', function(){
     scope.$digest();
     expect(scope.roman).toBe("MMMXMIX");
   });
+ it('should change show warning if entered number > 3999', function() {
+    scope.number = 4000;
+    scope.$digest();
+    expect(scope.error.length).not.toBe(0);
+  });
 });
