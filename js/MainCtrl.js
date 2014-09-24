@@ -9,23 +9,29 @@ app.controller('MainCtrl', function ($scope) {
 		
 		//Function to generate roman representation and store it in scope
 		$scope.generate = function(num) {
+		    //Show the warning if number is out of range
 			if(num === undefined || num < 1 || num > 3999){
 				$scope.error = error;
 				return;
 			}
 			
 			$scope.error = "";
-			var romanSymbols = ["M","XM","CM","D","XD","CD","C","XC","L","XL","X","IX","V","IV","I"];
-			var indianNumbers = [1000, 990, 900, 500, 490, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+			//Floor the value as roman numerals don't deal with decimals.
+			var n= Math.floor(num), val, roman= '' ,i = 0;
+			var indianNumerals = [1000,900,500,400,100,90,50,40,10,9,5,4,1];
+			var romanSymbols= ['M','CM','D','CD','C','XC','L','XL','X','IX','V','IV','I'];
 			
-			var i = 0, romanString= "";
-			
-			while (num > 0 || indianNumbers.length === (i - 1)) {
-				while ((num - indianNumbers[i]) >= 0) {
-					num -= indianNumbers[i];
-					romanString += romanSymbols[i];
+			while(i < 13){
+			    //Start checking from the highest number in the numerals list.
+				val = indianNumerals[i];
+				while(n >= val){
+				   //Take out the value from the number we are converting to carry on n the loop.
+					n -= val;
+					//Get the corresponding symbol for the number and append it to result.
+					roman += romanSymbols[i];
 				}
-				i++;
+				if(n === 0) $scope.roman = roman;
+				++i;
 			}
 			$scope.roman = romanString;
 		}
