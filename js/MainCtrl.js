@@ -33,6 +33,6 @@ app.controller('MainCtrl', function ($scope) {
 				if(n === 0) $scope.roman = roman;
 				++i;
 			}
-			$scope.roman = romanString;
+			$scope.roman = roman;
 		}
 });
